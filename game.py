@@ -17,6 +17,10 @@ pygame.init()
 pygame.display.set_caption("1945")
 
 # SET WINDOW RESOLUTION
+
+WIDTH = 320  # Declaro como variables al tamaño de la ventana de juego
+HEIGT = 480  # es mas facil para usar en los metodos
+
 resolution = (320, 480)
 # resolution = (640, 960)
 screen = pygame.display.set_mode(resolution, 0, 32)
@@ -96,6 +100,10 @@ class Player(object):
             self.rect.y -= 5
         if key[pygame.K_DOWN]:
             self.rect.y += 5
+        if self.rect.right > WIDTH:     # agregue tope para avion
+            self.rect.right = WIDTH     # porque sino se iba a la
+        if self.rect.left < 0:          # mierda de la pantalla
+            self.rect.left = 0
 
         self.draw(screen)
 
@@ -262,7 +270,7 @@ def update_players():
 def create_enemy():
     e = Enemy()
     random.seed()
-    e.rect.x = random.randrange(10, 300)
+    e.rect.x = random.randrange(10, 300)  # numero aleatorio de enemigos---------
     # e.rect.y = 10
     e.rect.y = random.randrange(-500, -10)
     enemies.append(e)
@@ -507,7 +515,7 @@ while True:
                     shot_snd.play()
                     create_shot(0, p1.rect.x, p1.rect.y)
                     p1.shots += 1
-                if event.key == pygame.K_LCTRL:
+                if event.key == pygame.K_a:
                     p1.bombs -= 1
 
             if event.key == pygame.K_F1:
