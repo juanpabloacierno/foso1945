@@ -184,7 +184,7 @@ class Background(object):
             create_background()
         self.y += 0.4
         screen.blit(self.image, (self.x, self.y))
-        print str(len(background))
+        print(str(len(background)))
                
 class Menu(object):
     def __init__(self):
@@ -328,7 +328,7 @@ def check_hit():
 
 # CREATE PLAYER
 def create_player():
-    print str(len(enemies))
+    print(str(len(enemies)))
     for e in enemies:
         thump_snd.play()
         create_explosion(0, e.rect.x, e.rect.y)
