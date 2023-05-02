@@ -18,8 +18,9 @@ pygame.display.set_caption("1945")
 
 # SET WINDOW RESOLUTION
 
-WIDTH = 320  # Declaro como variables al tamaño de la ventana de juego
-HEIGT = 480  # es mas facil para usar en los metodos
+# declare the size of the game window as variables
+WIDTH = 320  
+HEIGT = 480  
 
 resolution = (320, 480)
 # resolution = (640, 960)
@@ -100,9 +101,10 @@ class Player(object):
             self.rect.y -= 5
         if key[pygame.K_DOWN]:
             self.rect.y += 5
-        if self.rect.right > WIDTH:     # agregue tope para avion
-            self.rect.right = WIDTH     # porque sino se iba a la
-        if self.rect.left < 0:          # mierda de la pantalla
+        # limit is added on the screen    
+        if self.rect.right > WIDTH:  
+            self.rect.right = WIDTH  
+        if self.rect.left < 0:  
             self.rect.left = 0
 
         self.draw(screen)
@@ -270,7 +272,7 @@ def update_players():
 def create_enemy():
     e = Enemy()
     random.seed()
-    e.rect.x = random.randrange(10, 300)  # numero aleatorio de enemigos---------
+    e.rect.x = random.randrange(10, 300) 
     # e.rect.y = 10
     e.rect.y = random.randrange(-500, -10)
     enemies.append(e)
@@ -526,7 +528,7 @@ while True:
         pygame.mixer.music.play()
     play_musc = 0
     screen.fill((0, 67, 171))
-    # update_background()
+    update_background()
     update_water()
     update_players()
     spawn_enemies()
